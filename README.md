@@ -1,5 +1,7 @@
 Twitter Bootstrap CakePHP Helper
 ================================
+[![Build Status](https://travis-ci.org/imsamurai/cakephp-twitter-bootstrap.png)](https://travis-ci.org/imsamurai/cakephp-twitter-bootstrap) [![Coverage Status](https://coveralls.io/repos/imsamurai/cakephp-twitter-bootstrap/badge.png?branch=master)](https://coveralls.io/r/imsamurai/cakephp-twitter-bootstrap?branch=master) [![Latest Stable Version](https://poser.pugx.org/imsamurai/cakephp-twitter-bootstrap/v/stable.png)](https://packagist.org/packages/imsamurai/cakephp-twitter-bootstrap) [![Total Downloads](https://poser.pugx.org/imsamurai/cakephp-twitter-bootstrap/downloads.png)](https://packagist.org/packages/imsamurai/cakephp-twitter-bootstrap) [![Latest Unstable Version](https://poser.pugx.org/imsamurai/cakephp-twitter-bootstrap/v/unstable.png)](https://packagist.org/packages/imsamurai/cakephp-twitter-bootstrap) [![License](https://poser.pugx.org/imsamurai/cakephp-twitter-bootstrap/license.png)](https://packagist.org/packages/imsamurai/cakephp-twitter-bootstrap)
+
 
 CakePHP helper for rendering bootstrap appropriate markup. Uses the Twitter Bootstrap 2.0.
 

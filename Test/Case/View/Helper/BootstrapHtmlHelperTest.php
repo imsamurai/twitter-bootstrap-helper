@@ -10,11 +10,15 @@ if (!defined('FULL_BASE_URL')) {
 }
 
 class TestBootstrapHtmlController extends Controller {
+
 	public $name = 'TestBootstrap';
+	
 	public $uses = null;
+
 }
 
 class TestBootstrapHtmlHelper extends BootstrapHtmlHelper {
+
 	/**
 	 * expose a method as public
 	 */
@@ -35,14 +39,16 @@ class TestBootstrapHtmlHelper extends BootstrapHtmlHelper {
 	/**
 	 * Overwriting method to return a static string.
 	 */
-	public function _flash_content($key) {
+	protected function _flashContent($key) {
 		return "Flash content";
 	}
+
 }
 
 class BootstrapHtmlHelperTest extends CakeTestCase {
 
 	public $BootstrapHtml;
+	
 	public $View;
 
 	public function setUp() {
@@ -61,8 +67,8 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 		$expected = array(
 			"div" => array("class" => "btn-group"),
 			array("button" => array(
-				"class" => "btn dropdown-toggle", "data-toggle" => "dropdown"
-			)),
+					"class" => "btn dropdown-toggle", "data-toggle" => "dropdown"
+				)),
 			"Button Text",
 			"span" => array("class" => "caret"),
 			"/span",
@@ -82,13 +88,12 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 			"/div"
 		);
 		$button = $this->BootstrapHtml->buttonDropdown(
-			"Button Text",
-			array(
-				"links" => array(
-					array("Link 1", "#"),
-					array("Link 2", "#")
-				)
+				"Button Text", array(
+			"links" => array(
+				array("Link 1", "#"),
+				array("Link 2", "#")
 			)
+				)
 		);
 		$this->assertTags($button, $expected);
 	}
@@ -97,8 +102,8 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 		$expected = array(
 			"div" => array("class" => "btn-group"),
 			array("button" => array(
-				"class" => "btn dropdown-toggle", "data-toggle" => "dropdown"
-			)),
+					"class" => "btn dropdown-toggle", "data-toggle" => "dropdown"
+				)),
 			"Button Text",
 			"span" => array("class" => "caret"),
 			"/span",
@@ -118,15 +123,14 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 			"/div"
 		);
 		$button = $this->BootstrapHtml->buttonDropdown(
-			"Button Text",
-			array(
-				"links" => array(
-					array("Link 1", "#"),
-					$this->BootstrapHtml->link("Link 2", "#"),
-					array("key" => "value"),
-					array("Link 3", "key" => "value")
-				)
+				"Button Text", array(
+			"links" => array(
+				array("Link 1", "#"),
+				$this->BootstrapHtml->link("Link 2", "#"),
+				array("key" => "value"),
+				array("Link 3", "key" => "value")
 			)
+				)
 		);
 		$this->assertTags($button, $expected);
 	}
@@ -135,13 +139,13 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 		$expected = array(
 			"div" => array("class" => "btn-group"),
 			array("button" => array(
-				"class" => "btn"
-			)),
+					"class" => "btn"
+				)),
 			"Button Text",
 			array("/button" => true),
 			array("button" => array(
-				"class" => "btn dropdown-toggle", "data-toggle" => "dropdown"
-			)),
+					"class" => "btn dropdown-toggle", "data-toggle" => "dropdown"
+				)),
 			"span" => array("class" => "caret"),
 			"/span",
 			array("/button" => true),
@@ -160,14 +164,13 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 			"/div"
 		);
 		$button = $this->BootstrapHtml->buttonDropdown(
-			"Button Text",
-			array(
-				"split" => true,
-				"links" => array(
-					array("Link 1", "#"),
-					array("Link 2", "#")
-				)
+				"Button Text", array(
+			"split" => true,
+			"links" => array(
+				array("Link 1", "#"),
+				array("Link 2", "#")
 			)
+				)
 		);
 		$this->assertTags($button, $expected);
 	}
@@ -176,8 +179,8 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 		$expected = array(
 			"div" => array("class" => "btn-group"),
 			array("button" => array(
-				"class" => "btn btn-primary dropdown-toggle", "data-toggle" => "dropdown"
-			)),
+					"class" => "btn btn-primary dropdown-toggle", "data-toggle" => "dropdown"
+				)),
 			"Button Text",
 			"span" => array("class" => "caret"),
 			"/span",
@@ -197,14 +200,13 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 			"/div"
 		);
 		$button = $this->BootstrapHtml->buttonDropdown(
-			"Button Text",
-			array(
-				"style" => "primary",
-				"links" => array(
-					array("Link 1", "#"),
-					array("Link 2", "#")
-				)
+				"Button Text", array(
+			"style" => "primary",
+			"links" => array(
+				array("Link 1", "#"),
+				array("Link 2", "#")
 			)
+				)
 		);
 		$this->assertTags($button, $expected);
 	}
@@ -213,8 +215,8 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 		$expected = array(
 			"div" => array("class" => "btn-group"),
 			array("button" => array(
-				"class" => "btn btn-large dropdown-toggle", "data-toggle" => "dropdown"
-			)),
+					"class" => "btn btn-large dropdown-toggle", "data-toggle" => "dropdown"
+				)),
 			"Button Text",
 			"span" => array("class" => "caret"),
 			"/span",
@@ -234,14 +236,13 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 			"/div"
 		);
 		$button = $this->BootstrapHtml->buttonDropdown(
-			"Button Text",
-			array(
-				"size" => "large",
-				"links" => array(
-					array("Link 1", "#"),
-					array("Link 2", "#")
-				)
+				"Button Text", array(
+			"size" => "large",
+			"links" => array(
+				array("Link 1", "#"),
+				array("Link 2", "#")
 			)
+				)
 		);
 		$this->assertTags($button, $expected);
 	}
@@ -250,8 +251,8 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 		$expected = array(
 			"div" => array("class" => "btn-group"),
 			array("button" => array(
-				"class" => "btn btn-danger dropdown-toggle", "data-toggle" => "dropdown"
-			)),
+					"class" => "btn btn-danger dropdown-toggle", "data-toggle" => "dropdown"
+				)),
 			"Button Text",
 			"span" => array("class" => "caret"),
 			"/span",
@@ -273,15 +274,14 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 			"/div"
 		);
 		$button = $this->BootstrapHtml->buttonDropdown(
-			"Button Text",
-			array(
-				"style" => "danger",
-				"links" => array(
-					array("Link 1", "#"),
-					null,
-					array("Link 2", "#")
-				)
+				"Button Text", array(
+			"style" => "danger",
+			"links" => array(
+				array("Link 1", "#"),
+				null,
+				array("Link 2", "#")
 			)
+				)
 		);
 		$this->assertTags($button, $expected);
 	}
@@ -290,8 +290,8 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 		$expected = array(
 			"div" => array("class" => "btn-group dropup"),
 			array("button" => array(
-				"class" => "btn btn-danger dropdown-toggle", "data-toggle" => "dropdown"
-			)),
+					"class" => "btn btn-danger dropdown-toggle", "data-toggle" => "dropdown"
+				)),
 			"Button Text",
 			"span" => array("class" => "caret"),
 			"/span",
@@ -313,16 +313,15 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 			"/div"
 		);
 		$button = $this->BootstrapHtml->buttonDropdown(
-			"Button Text",
-			array(
-				"style" => "danger",
-				"dropup" => true,
-				"links" => array(
-					array("Link 1", "#"),
-					null,
-					array("Link 2", "#")
-				)
+				"Button Text", array(
+			"style" => "danger",
+			"dropup" => true,
+			"links" => array(
+				array("Link 1", "#"),
+				null,
+				array("Link 2", "#")
 			)
+				)
 		);
 		$this->assertTags($button, $expected);
 	}
@@ -331,8 +330,8 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 		$expected = array(
 			"div" => array("class" => "btn-group"),
 			array("button" => array(
-				"class" => "btn btn-warning dropdown-toggle", "data-toggle" => "dropdown"
-			)),
+					"class" => "btn btn-warning dropdown-toggle", "data-toggle" => "dropdown"
+				)),
 			"Button Text",
 			"span" => array("class" => "caret"),
 			"/span",
@@ -354,16 +353,15 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 			"/div"
 		);
 		$button = $this->BootstrapHtml->buttonDropdown(
-			"Button Text",
-			array(
-				"style" => "warning",
-				"right" => true,
-				"links" => array(
-					array("Link 1", "#"),
-					null,
-					array("Link 2", "#")
-				)
+				"Button Text", array(
+			"style" => "warning",
+			"right" => true,
+			"links" => array(
+				array("Link 1", "#"),
+				null,
+				array("Link 2", "#")
 			)
+				)
 		);
 		$this->assertTags($button, $expected);
 	}
@@ -372,8 +370,8 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 		$expected = array(
 			"div" => array("class" => "btn-group dropup"),
 			array("button" => array(
-				"class" => "btn btn-warning dropdown-toggle", "data-toggle" => "dropdown"
-			)),
+					"class" => "btn btn-warning dropdown-toggle", "data-toggle" => "dropdown"
+				)),
 			"Button Text",
 			"span" => array("class" => "caret"),
 			"/span",
@@ -395,17 +393,16 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 			"/div"
 		);
 		$button = $this->BootstrapHtml->buttonDropdown(
-			"Button Text",
-			array(
-				"style" => "warning",
-				"right" => true,
-				"dropup" => true,
-				"links" => array(
-					array("Link 1", "#"),
-					null,
-					array("Link 2", "#")
-				)
+				"Button Text", array(
+			"style" => "warning",
+			"right" => true,
+			"dropup" => true,
+			"links" => array(
+				array("Link 1", "#"),
+				null,
+				array("Link 2", "#")
 			)
+				)
 		);
 		$this->assertTags($button, $expected);
 	}
@@ -423,41 +420,31 @@ class BootstrapHtmlHelperTest extends CakeTestCase {
 		$this->assertTags($result, $expected);
 
 		$result = $this->BootstrapHtml->buttonLink(
-			"Link Text",
-			"/home",
-			array("size" => "large")
+				"Link Text", "/home", array("size" => "large")
 		);
 		$expected["a"]["class"] = 'preg:/btn btn-large/';
 		$this->assertTags($result, $expected);
 
 		$result = $this->BootstrapHtml->buttonLink(
-			"Link Text",
-			"/home",
-			array("style" => "info")
+				"Link Text", "/home", array("style" => "info")
 		);
 		$expected["a"]["class"] = 'preg:/btn btn-info/';
 		$this->assertTags($result, $expected);
 
 		$result = $this->BootstrapHtml->buttonLink(
-			"Link Text",
-			"/home",
-			array("style" => "info", "size" => "mini")
+				"Link Text", "/home", array("style" => "info", "size" => "mini")
 		);
 		$expected["a"]["class"] = 'preg:/btn btn-info btn-mini/';
 		$this->assertTags($result, $expected);
 
 		$result = $this->BootstrapHtml->buttonLink(
-			"Link Text",
-			"/home",
-			array("style" => "info", "size" => "small", "class" => "some-class")
+				"Link Text", "/home", array("style" => "info", "size" => "small", "class" => "some-class")
 		);
 		$expected["a"]["class"] = 'preg:/some-class btn btn-info btn-small/';
 		$this->assertTags($result, $expected);
 
 		$result = $this->BootstrapHtml->buttonLink(
-			"Link Text",
-			"/home",
-			array("style" => "info", "size" => "small", "disabled" => true)
+				"Link Text", "/home", array("style" => "info", "size" => "small", "disabled" => true)
 		);
 		$expected["a"]["class"] = 'preg:/btn btn-info btn-small disabled/';
 		$this->assertTags($result, $expected);

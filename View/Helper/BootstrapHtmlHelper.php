@@ -33,7 +33,7 @@ class BootstrapHtmlHelper extends HtmlHelper {
 				}
 				$opt = isset($link[2]) ? $link[2] : array();
 				$confirm = isset($link[3]) ? $link[3] : false;
-				$l = "<li>".$this->link($title, $url, $opt, $confirm)."</li>";
+				$l = "<li>" . $this->link($title, $url, $opt, $confirm) . "</li>";
 				$links .= $l;
 			} elseif (is_string($link)) {
 				$links .= "<li>{$link}</li>";
@@ -43,43 +43,35 @@ class BootstrapHtmlHelper extends HtmlHelper {
 		}
 		if ($split) {
 			$button = $this->tag(
-				"button",
-				$value,
-				array(
-					"class" => $options["class"]
-				)
+					"button", $value, array(
+				"class" => $options["class"]
+					)
 			);
 			$button .= $this->tag(
-				"button",
-				"\n" . '<span class="caret"></span>',
-				array(
-					"class" => $options["class"] . " dropdown-toggle",
-					"data-toggle" => "dropdown"
-				)
+					"button", "\n" . '<span class="caret"></span>', array(
+				"class" => $options["class"] . " dropdown-toggle",
+				"data-toggle" => "dropdown"
+					)
 			);
 		} else {
 			$button = $this->tag(
-				"button",
-				$value . ' <span class="caret"></span>',
-				array(
-					"class" => $options["class"] . " dropdown-toggle",
-					"data-toggle" => "dropdown"
-				)
+					"button", $value . ' <span class="caret"></span>', array(
+				"class" => $options["class"] . " dropdown-toggle",
+				"data-toggle" => "dropdown"
+					)
 			);
 		}
-		$group_class = "btn-group";
-		$ul_class = "dropdown-menu";
+		$groupClass = "btn-group";
+		$ulClass = "dropdown-menu";
 		if (isset($options["dropup"]) && $options["dropup"]) {
-			$group_class .= " dropup";
+			$groupClass .= " dropup";
 		}
 		if (isset($options["right"]) && $options["right"]) {
-			$ul_class .= " pull-right";
+			$ulClass .= " pull-right";
 		}
-		$links = $this->tag("ul", $links, array("class" => $ul_class));
+		$links = $this->tag("ul", $links, array("class" => $ulClass));
 		return $this->tag(
-			"div",
-			$button . $links,
-			array("class" => $group_class)
+						"div", $button . $links, array("class" => $groupClass)
 		);
 	}
 
@@ -108,11 +100,11 @@ class BootstrapHtmlHelper extends HtmlHelper {
 	 * @return string
 	 */
 	public function buttonOptions($options) {
-		$valid_styles = array(
+		$validStyles = array(
 			"danger", "info", "primary",
 			"warning", "success", "inverse"
 		);
-		$valid_sizes = array("mini", "small", "large");
+		$validSizes = array("mini", "small", "large");
 		$style = isset($options["style"]) ? $options["style"] : "";
 		$size = isset($options["size"]) ? $options["size"] : "";
 		$disabled = false;
@@ -120,13 +112,15 @@ class BootstrapHtmlHelper extends HtmlHelper {
 			$disabled = (bool)$options["disabled"];
 		}
 		$class = "btn";
-		if (!empty($style) && in_array($style, $valid_styles)) {
+		if (!empty($style) && in_array($style, $validStyles)) {
 			$class .= " btn-{$style}";
 		}
-		if (!empty($size) && in_array($size, $valid_sizes)) {
+		if (!empty($size) && in_array($size, $validSizes)) {
 			$class .= " btn-{$size}";
 		}
-		if ($disabled) { $class .= " disabled"; }
+		if ($disabled) {
+			$class .= " disabled";
+		}
 		unset($options["style"]);
 		unset($options["size"]);
 		unset($options["disabled"]);
@@ -160,7 +154,8 @@ class BootstrapHtmlHelper extends HtmlHelper {
 			$divider = $options["divider"];
 			unset($options["divider"]);
 		}
-		for ($i = 0; $i < count($crumbs); $i += 1) {
+		$crumbsCount = count($crumbs);
+		for ($i = 0; $i < $crumbsCount; $i += 1) {
 			$opt = array();
 			$d = $this->tag("span", $divider, array("class" => "divider"));
 			if (!isset($crumbs[$i + 1])) {

@@ -10,11 +10,15 @@ if (!defined('FULL_BASE_URL')) {
 }
 
 class TestBootstrapController extends Controller {
+
 	public $name = 'TestBootstrap';
+	
 	public $uses = null;
+
 }
 
 class TestBootstrapHelper extends BootstrapHelper {
+
 	/**
 	 * expose a method as public
 	 */
@@ -35,14 +39,16 @@ class TestBootstrapHelper extends BootstrapHelper {
 	/**
 	 * Overwriting method to return a static string.
 	 */
-	public function _flash_content($key = 'flash') {
+	protected function _flashContent($key = 'flash') {
 		return "Flash content";
 	}
+
 }
 
 class BootstrapHelperTest extends CakeTestCase {
 
 	public $Bootstrap;
+	
 	public $View;
 
 	public function setUp() {
@@ -160,11 +166,11 @@ class BootstrapHelperTest extends CakeTestCase {
 	public function testInvalidLabel() {
 		$expected = array("span" => array("class" => "label"), "Message", "/span");
 		// Returns default label when passed invalid string
-		$invalid_string = $this->Bootstrap->label("Message", "invalid");
-		$this->assertTags($invalid_string, $expected);
+		$invalidString = $this->Bootstrap->label("Message", "invalid");
+		$this->assertTags($invalidString, $expected);
 		// Returns default label when passed invalid int
-		$invalid_int = $this->Bootstrap->label("Message", 12);
-		$this->assertTags($invalid_int, $expected);
+		$invalidInt = $this->Bootstrap->label("Message", 12);
+		$this->assertTags($invalidInt, $expected);
 	}
 
 	public function testValidBadge() {
@@ -413,29 +419,25 @@ class BootstrapHelperTest extends CakeTestCase {
 
 		$expected['div']['class'] = 'alert alert-block alert-info';
 		$result = $this->Bootstrap->block(
-			"Message content",
-			array("style" => "info")
+				"Message content", array("style" => "info")
 		);
 		$this->assertTags($result, $expected);
 
 		$expected['div']['class'] = 'alert alert-block alert-success';
 		$result = $this->Bootstrap->block(
-			"Message content",
-			array("style" => "success")
+				"Message content", array("style" => "success")
 		);
 		$this->assertTags($result, $expected);
 
 		$expected['div']['class'] = 'alert alert-block alert-error';
 		$result = $this->Bootstrap->block(
-			"Message content",
-			array("style" => "error")
+				"Message content", array("style" => "error")
 		);
 		$this->assertTags($result, $expected);
 
 		$expected['div']['class'] = 'alert alert-block';
 		$result = $this->Bootstrap->block(
-			"Message content",
-			array("style" => "warning")
+				"Message content", array("style" => "warning")
 		);
 		$this->assertTags($result, $expected);
 
@@ -446,8 +448,7 @@ class BootstrapHelperTest extends CakeTestCase {
 			'/div'
 		);
 		$result = $this->Bootstrap->block(
-			"Message content",
-			array("heading" => "Block Heading")
+				"Message content", array("heading" => "Block Heading")
 		);
 		$this->assertTags($result, $expected);
 	}
@@ -455,8 +456,7 @@ class BootstrapHelperTest extends CakeTestCase {
 	public function testClosableBlock() {
 		$expected = '<div class="alert alert-block alert-info"><a class="close" data-dismiss="alert">&times;</a>Message content</div>';
 		$result = $this->Bootstrap->block(
-			"Message content",
-			array("closable" => true, "style" => "info")
+				"Message content", array("closable" => true, "style" => "info")
 		);
 		$this->assertEquals($result, $expected);
 	}

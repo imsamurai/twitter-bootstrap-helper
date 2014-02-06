@@ -1,0 +1,37 @@
+{
+  "name": "imsamurai/cakephp-twitter-bootstrap",
+  "description": "Behavior for saving and reading serialized data from/into database",
+  "type": "cakephp-plugin",
+  "keywords": [
+    "cakephp",
+    "twitter",
+    "bootstrap",
+    "helper"
+  ],
+  "homepage": "http://github.com/imsamurai/twitter-bootstrap-helper",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Shamray Alexander",
+      "email": "im.samuray@gmail.com",
+      "homepage": "https://imsamurai.me",
+      "role": "Maintainer"
+    },
+    {
+      "name": "loadsys",
+      "homepage": "https://github.com/loadsys/",
+      "role": "Founder"
+    }
+  ],
+  "require": {
+    "composer/installers": "*"
+  },
+  "support": {
+    "email": "im.samuray@gmail.com",
+    "issues": "https://github.com/imsamurai/twitter-bootstrap-helper/issues",
+    "source": "https://github.com/imsamurai/twitter-bootstrap-helper"
+  },
+  "extra": {
+    "installer-name": "TwitterBootstrap"
+  }
+}

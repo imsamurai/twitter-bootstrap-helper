@@ -16,18 +16,19 @@ if (!defined('FULL_BASE_URL')) {
 class TestBootstrapFormController extends Controller {
 
 	public $name = 'TheTest';
-
+	
 	public $uses = null;
+
 }
 
 class Contact extends CakeTestModel {
 
 	public $primaryKey = 'id';
-
+	
 	public $useTable = false;
-
+	
 	public $name = 'Contact';
-
+	
 	protected $_schema = array(
 		'id' => array('type' => 'integer', 'null' => '', 'default' => '', 'length' => '8'),
 		'name' => array('type' => 'string', 'null' => '', 'default' => '', 'length' => '255'),
@@ -39,6 +40,7 @@ class Contact extends CakeTestModel {
 		'updated' => array('type' => 'datetime', 'null' => '1', 'default' => '', 'length' => null),
 		'age' => array('type' => 'integer', 'null' => '', 'default' => '', 'length' => null)
 	);
+
 }
 
 class TestBootstrapFormHelper extends BootstrapFormHelper {
@@ -53,6 +55,7 @@ class TestBootstrapFormHelper extends BootstrapFormHelper {
 		}
 		return $this->{$attribute};
 	}
+
 }
 
 /**
@@ -63,10 +66,11 @@ class TestBootstrapFormHelper extends BootstrapFormHelper {
 class BootstrapFormHelperTest extends CakeTestCase {
 
 	public $BootstrapForm;
+	
 	public $View;
-
+	
 	public $validLabel = '<span class="label%s">Message</span>';
-
+	
 	public $validButton = '<button class="btn%s" type="submit">Submit</button>';
 
 	public function setUp() {
@@ -140,8 +144,7 @@ class BootstrapFormHelperTest extends CakeTestCase {
 		$this->assertEquals(sprintf($expected, " btn-large"), $large);
 		// Mixed button
 		$mixed = $this->BootstrapForm->button(
-			"Submit",
-			array("style" => "primary", "size" => "small")
+				"Submit", array("style" => "primary", "size" => "small")
 		);
 		$this->assertEquals(sprintf($expected, " btn-primary btn-small"), $mixed);
 	}
@@ -167,11 +170,11 @@ class BootstrapFormHelperTest extends CakeTestCase {
 	public function testInvalidButtonStylesAndSizes() {
 		$expected = $this->validButton;
 		// Invalid size button
-		$invalid_size = $this->BootstrapForm->button("Submit", array("size" => "invalid"));
-		$this->assertEquals(sprintf($expected, ""), $invalid_size);
+		$invalidSize = $this->BootstrapForm->button("Submit", array("size" => "invalid"));
+		$this->assertEquals(sprintf($expected, ""), $invalidSize);
 		// Invalid style button
-		$invalid_style = $this->BootstrapForm->button("Submit", array("style" => "invalid"));
-		$this->assertEquals(sprintf($expected, ""), $invalid_style);
+		$invalidStyle = $this->BootstrapForm->button("Submit", array("style" => "invalid"));
+		$this->assertEquals(sprintf($expected, ""), $invalidStyle);
 	}
 
 	/**
@@ -202,25 +205,19 @@ class BootstrapFormHelperTest extends CakeTestCase {
 
 		$expected['a']['class'] = 'preg:/btn btn-small/';
 		$result = $this->BootstrapForm->buttonForm(
-			"Link Text",
-			"/home",
-			array("size" => "small")
+				"Link Text", "/home", array("size" => "small")
 		);
 		$this->assertTags($result, $expected);
 
 		$expected['a']['class'] = 'preg:/btn btn-danger/';
 		$result = $this->BootstrapForm->buttonForm(
-			"Link Text",
-			"/home",
-			array("style" => "danger")
+				"Link Text", "/home", array("style" => "danger")
 		);
 		$this->assertTags($result, $expected);
 
 		$expected['a']['class'] = 'preg:/btn btn-success btn-large/';
 		$result = $this->BootstrapForm->buttonForm(
-			"Link Text",
-			"/home",
-			array("style" => "success", "size" => "large")
+				"Link Text", "/home", array("style" => "success", "size" => "large")
 		);
 		$this->assertTags($result, $expected);
 	}
@@ -394,18 +391,18 @@ class BootstrapFormHelperTest extends CakeTestCase {
 		$expected = array(
 			array("div" => array("class" => "control-group")),
 			array("label" => array("for" => "ContactName", "class" => "control-label")),
-				"Name",
+			"Name",
 			"/label",
 			array("div" => array("class" => "controls")),
 			array("div" => array("class" => "input-append")),
 			array("input" => array(
-				"name" => "data[Contact][name]",
-				"maxlength" => 255,
-				"type" => "text",
-				"id" => "ContactName"
-			)),
+					"name" => "data[Contact][name]",
+					"maxlength" => 255,
+					"type" => "text",
+					"id" => "ContactName"
+				)),
 			array("label" => array("class" => "add-on")),
-				array("input" => array(
+			array("input" => array(
 					"type" => "checkbox",
 					"name" => "data[Contact][confirm]",
 					"value" => "1",
@@ -488,12 +485,12 @@ class BootstrapFormHelperTest extends CakeTestCase {
 		$expected = array(
 			array("div" => array("class" => "control-group")),
 			array("label" => array("for" => "ContactName", "class" => "control-label")),
-				"Name",
+			"Name",
 			"/label",
 			array("div" => array("class" => "controls")),
 			array("div" => array("class" => "input-prepend")),
 			array("label" => array("class" => "add-on")),
-				array("input" => array(
+			array("input" => array(
 					"type" => "checkbox",
 					"name" => "data[Contact][confirm]",
 					"value" => "1",
@@ -501,11 +498,11 @@ class BootstrapFormHelperTest extends CakeTestCase {
 				)),
 			"/label",
 			array("input" => array(
-				"name" => "data[Contact][name]",
-				"maxlength" => 255,
-				"type" => "text",
-				"id" => "ContactName"
-			)),
+					"name" => "data[Contact][name]",
+					"maxlength" => 255,
+					"type" => "text",
+					"id" => "ContactName"
+				)),
 			"/div",
 			"/div",
 			"/div"
@@ -547,4 +544,5 @@ class BootstrapFormHelperTest extends CakeTestCase {
 		$this->BootstrapForm->end();
 		$this->assertTags($input, $expected);
 	}
+
 }

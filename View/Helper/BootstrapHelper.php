@@ -10,11 +10,9 @@ class BootstrapHelper extends AppHelper {
 	 * @param string $title
 	 * @return string
 	 */
-	public function pageHeader($title){
+	public function pageHeader($title) {
 		return $this->Html->tag(
-			"div",
-			"<h1>$title</h1>",
-			array("class" => "page-header")
+						"div", "<h1>$title</h1>", array("class" => "page-header")
 		);
 	}
 
@@ -24,7 +22,7 @@ class BootstrapHelper extends AppHelper {
 	 * third param.
 	 *
 	 * @param string $message
-	 * @param string $type
+	 * @param string $style
 	 * @param array $options
 	 * @access public
 	 * @return string
@@ -88,16 +86,14 @@ class BootstrapHelper extends AppHelper {
 			$class .= " active";
 		}
 		if (
-			isset($options["width"]) &&
-			!empty($options["width"]) &&
-			is_int($options["width"])
+				isset($options["width"]) &&
+				!empty($options["width"]) &&
+				is_int($options["width"])
 		) {
 			$width = $options["width"];
 		}
 		$bar = $this->Html->tag(
-			"div",
-			"",
-			array("class" => "bar", "style" => "width: {$width}%;")
+				"div", "", array("class" => "bar", "style" => "width: {$width}%;")
 		);
 		return $this->Html->tag("div", $bar, array("class" => $class));
 	}
@@ -146,9 +142,7 @@ class BootstrapHelper extends AppHelper {
 			$class = "alert alert-{$style}";
 		}
 		return $this->Html->tag(
-			'div',
-			"{$close}{$content}",
-			array("class" => $class)
+						'div', "{$close}{$content}", array("class" => $class)
 		);
 	}
 
@@ -165,8 +159,10 @@ class BootstrapHelper extends AppHelper {
 	 * @return string
 	 */
 	public function flash($key = "flash", $options = array()) {
-		$content = $this->_flash_content($key);
-		if (empty($content)) { return ''; }
+		$content = $this->_flashContent($key);
+		if (empty($content)) {
+			return '';
+		}
 		$close = false;
 		if (isset($options['closable']) && $options['closable']) {
 			$close = true;
@@ -193,22 +189,10 @@ class BootstrapHelper extends AppHelper {
 		$keys = $options["keys"];
 		unset($options["keys"]);
 		$out = '';
-		foreach($keys as $key) {
+		foreach ($keys as $key) {
 			$out .= $this->flash($key, $options);
 		}
 		return $out;
-	}
-
-	/**
-	 * Returns the content from SessionHelper::flash() for the passed in
-	 * $key.
-	 *
-	 * @param string $key
-	 * @access public
-	 * @return void
-	 */
-	public function _flash_content($key = "flash") {
-		return $this->Session->flash($key, array("element" => null));
 	}
 
 	/**
@@ -234,16 +218,24 @@ class BootstrapHelper extends AppHelper {
 		}
 		if (isset($options["heading"]) && !empty($options["heading"])) {
 			$heading = $this->Html->tag(
-				"h4",
-				$options["heading"],
-				array("class" => "alert-heading")
+					"h4", $options["heading"], array("class" => "alert-heading")
 			);
 		}
 		return $this->Html->tag(
-			"div",
-			$close.$heading.$message,
-			array("class" => $class)
+						"div", $close . $heading . $message, array("class" => $class)
 		);
+	}
+
+	/**
+	 * Returns the content from SessionHelper::flash() for the passed in
+	 * $key.
+	 *
+	 * @param string $key
+	 * @access public
+	 * @return void
+	 */
+	protected function _flashContent($key = "flash") {
+		return $this->Session->flash($key, array("element" => null));
 	}
 
 }

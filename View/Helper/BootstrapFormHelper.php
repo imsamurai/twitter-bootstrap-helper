@@ -198,7 +198,7 @@ class BootstrapFormHelper extends FormHelper {
 	 * @return string
 	 */
 	public function buttonForm($title, $url, $options = array(), $confirm = false) {
-		$opt = $this->buttonOptions($options);
+		$options = $this->buttonOptions($options);
 		return $this->postLink($title, $url, $options, $confirm);
 	}
 
